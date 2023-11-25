@@ -120,6 +120,8 @@ spec:
                   containerPort: 9000
                 - name: interserver
                   containerPort: 9009
+                - name: metrics
+                  containerPort: 9363
               {{- if .Values.clickhouse.persistence.enabled }}
               volumeMounts:
               {{- if .Values.clickhouse.persistence.existingClaim }}
