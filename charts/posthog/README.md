@@ -4,7 +4,7 @@ First update the chart / templates / whatever you need and then bump the version
 ```
 Helm package charts/posthog
 mv posthog-<version>.tgz docs/
-Helm repo index --url https://github.com/compose-ai/charts-clickhouse --merge docs/index.yaml docs
+Helm repo index --url https://compose-ai.github.io/charts-clickhouse --merge docs/index.yaml docs
 ```
 
 # ⚠️ PostHog no longer supports Kubernetes deployments. ⚠️ 
