@@ -1,3 +1,12 @@
+# Compose
+## Helm commands to upload to the helm repository that this repo doubles as
+First update the chart / templates / whatever you need and then bump the version number on the Chart.yaml. Then run the following commands and push to main
+```
+Helm package charts/posthog
+mv posthog-<version>.tgz docs/
+Helm repo index --url https://github.com/compose-ai/charts-clickhouse --merge docs/index.yaml docs
+```
+
 # ⚠️ PostHog no longer supports Kubernetes deployments. ⚠️ 
 
 **As of May 2023, [PostHog no longer support Kubernetes deployments](https://posthog.com/blog/sunsetting-helm-support-posthog).** This decision doesn't impact open source ("Hobby") users on [Docker Compose deployments](https://posthog.com/docs/self-host). 
@@ -117,3 +126,4 @@ to the `main` branch.
 
 Note that development charts are also released on PRs such that changes can be tested as required
 before merge, e.g. changing staging/dev to use the chart for more end to end validation.
+
