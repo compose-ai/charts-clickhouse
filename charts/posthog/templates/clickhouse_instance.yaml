@@ -83,6 +83,11 @@ spec:
 
           {{- if .Values.clickhouse.persistence.enabled }}
           volumes:
+          {{- if .Values.clickhouse.backup.gcsSecret }}
+            - name: google-cloud-key
+              secret:
+                secretName: gcs-key
+          {{- end}}
           {{- if .Values.clickhouse.persistence.existingClaim }}
             - name: existing-volumeclaim
               persistentVolumeClaim:
@@ -146,6 +151,11 @@ spec:
               {{- with .Values.clickhouse.backup.env }}
               env:
                 {{- toYaml . | nindent 16 }}
+              {{- end}}
+              {{- if .Values.clickhouse.backup.gcsSecret }}
+              volumeMounts:
+                - name: google-cloud-key
+                  mountPath: /var/secrets/google
               {{- end}}
               ports:
                 - name: backup-rest
