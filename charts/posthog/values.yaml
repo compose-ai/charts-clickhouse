@@ -1953,6 +1953,7 @@ clickhouse:
       ##
       pullSecrets: []
 
+    # gcsSecret: 
     backup_user: backup
     # password in plain text because it's using in cronjob
     backup_password: backup_password
