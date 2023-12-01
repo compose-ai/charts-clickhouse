@@ -86,7 +86,7 @@ spec:
           {{- if .Values.clickhouse.backup.gcsSecret }}
             - name: google-cloud-key
               secret:
-                secretName: gcs-key
+                secretName: {{ .Values.clickhouse.backup.gcsSecret }}
           {{- end}}
           {{- if .Values.clickhouse.persistence.existingClaim }}
             - name: existing-volumeclaim
