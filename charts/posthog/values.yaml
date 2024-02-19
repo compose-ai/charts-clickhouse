@@ -1954,6 +1954,8 @@ clickhouse:
       pullSecrets: []
 
     # gcsSecret: 
+    # storage access key should be store in the 'azurestorageaccountkey' key of this secret
+    # azureSecret: 
     backup_user: backup
     # password in plain text because it's using in cronjob
     backup_password: backup_password

@@ -151,6 +151,13 @@ spec:
               {{- with .Values.clickhouse.backup.env }}
               env:
                 {{- toYaml . | nindent 16 }}
+                {{- if .Values.clickhouse.backup.azureSecret }}
+                - name: AZBLOB_ACCOUNT_KEY
+                  valueFrom:
+                    secretKeyRef: 
+                      name: {{ .Values.clickhouse.backup.azureSecret }}
+                      key: azurestorageaccountkey
+                {{- end}}
               {{- end}}
               {{- if .Values.clickhouse.backup.gcsSecret }}
               volumeMounts:
